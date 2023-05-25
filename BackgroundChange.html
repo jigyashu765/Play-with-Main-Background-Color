@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="DocTitle">Background Change</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body{
+        background-color: black;
+    }
+
+    button {
+        align-items: center;
+        background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+        border: 0;
+        border-radius: 6px;
+        color: #fff;
+        cursor: pointer;
+        font-family: "JetBrains Mono",monospace;
+        height: 48px;
+        line-height: 1;
+        margin: 16px;
+        padding: 0 16px;
+        font-size: 22px;
+	}
+
+	button:hover {
+        box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+        transform: translateY(-2.5px);
+	}
+</style>
+<body id="main">
+    <button onclick="changeColor('red')">Color : Red</button>
+    <button onclick="changeColor('blue')">Color : Blue</button>
+    <button onclick="changeColor('orange')">Color : Orange</button>
+    <button onclick="changeColor('yellow')">Color : Yellow</button>
+    <button onclick="changeColor('randomColor')">Random Color</button>
+    <button onclick="changeColor('allColor')">AllColor</button>
+</body>
+<script>
+    const colors = ["Red", "Blue", "Orange", "Yellow"];
+    var main = document.getElementById("main");
+    var DocTitle = document.getElementById("DocTitle");
+
+    function changeColor(color) {
+        if (color == 'red') {
+            DocTitle.innerHTML = "Background Color " + colors[0];
+            main.style.backgroundColor = colors[0];
+            clearInterval(interval);
+        } else if (color == 'blue') {
+            DocTitle.innerHTML = "Background Color " + colors[1];
+            main.style.backgroundColor = colors[1];
+            clearInterval(interval);
+        } else if (color == 'orange') {
+            DocTitle.innerHTML = "Background Color " + colors[2];
+            main.style.backgroundColor = colors[2];
+            clearInterval(interval);
+        } else if (color == 'yellow') {
+            DocTitle.innerHTML = "Background Color " + colors[3];
+            main.style.backgroundColor = colors[3];
+            clearInterval(interval);
+        } else if (color == 'randomColor'){
+            const randomIndex = Math.floor(Math.random() * colors.length);
+            DocTitle.innerHTML = "Random Color " + colors[randomIndex];
+            main.style.backgroundColor = colors[randomIndex];
+            clearInterval(interval);
+        } else {
+            let index = 0;
+        
+            interval = setInterval(() => {
+                DocTitle.innerHTML = "Background Color All";
+                main.style.backgroundColor = colors[index];
+                index = (index + 1) % colors.length;
+            }, 800);
+        }
+    }
+</script>
+</html>
